@@ -49,6 +49,9 @@ class FreqStack(object):
                 result =  self.stack.pop()
                 while not additional_stack.is_empty():
                     self.stack.push(additional_stack.pop())
+                self.frequencies[result] -= 1
+                if self.frequencies[result] == 0:
+                    del self.frequencies[result]
                 return result
             additional_stack.push(self.stack.pop())
 
